@@ -1,10 +1,10 @@
-import react from "./assets/cart-fill.svg"
+import cart from "./assets/cart-fill.svg"
 
 const CartWidget = () => {
 
     return(
         <div>
-            <img src={react} alt="cart-widget" />
+            <img src={cart} alt="cart-widget" />
             0
         </div>
     )

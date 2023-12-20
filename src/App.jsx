@@ -10,8 +10,7 @@ function App() {
     <>
       <NavBar/>
       <ItemListContainer greeting={"Welcome! What are you buying?"} />
-      <ItemCount title={"Gift Cards"} initialValue={0} />
-      <ItemCount title={"Other Promotional Codes"} initialValue={0} />
+      <ItemCount title={"Item"} initialValue={0} />
     </>
   )
 }

@@ -1,14 +1,16 @@
+import ButtonDefault from "../ButtonDefault/ButtonDefault"
 import Button from "../Button/Button"
-import CartWidget from "../CartWidget/CartWidget"
+import CartWidget from "../CartWidget/CartWidget" 
+import classes from "./NavBar.module.css"
 
 const NavBar = () => {
     return (
-        <nav>
-            <h1>Kryptos</h1>
-            <section>
-                <Button label={"Home"} handleClick={() => console.log("Home")} />
-                <Button label={"Tokens"} handleClick={() => console.log("Tokens")}/>
-                <Button label={"NFTs"} handleClick={() => console.log("NFTs")}/>
+        <nav className={`${classes.navbar}`}>
+            <h1 className={`${classes.title}`}>BT Games</h1>
+            <section className={`${classes.navbar_menu}`}>
+                <ButtonDefault label={"Home"} handleClick={() => console.log("Home")} />
+                <Button label={"Consolas"} handleClick={() => console.log("Consolas")}/>
+                <Button label={"Juegos"} handleClick={() => console.log("Juegos")}/>
                 <Button label={"About Us"} handleClick={() => console.log("About Us")}/>
                 <Button label={"Contact"} handleClick={() => console.log("Contact")}/>
             </section>

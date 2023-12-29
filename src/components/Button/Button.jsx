@@ -1,7 +1,9 @@
+import classes from "./Button.module.css"
+
 const Button = (props) => {
     
     return(
-        <button onClick={props.handleClick} style={{ color: "green"}}>{props.label}</button>
+        <button className={`${classes.btn}`} onClick={props.handleClick} >{props.label} </button>
     )
 }
 

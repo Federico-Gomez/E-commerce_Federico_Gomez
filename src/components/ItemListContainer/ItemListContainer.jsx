@@ -1,7 +1,9 @@
+import classes from "./ItemListContainer.module.css"
+
 const ItemListContainer = ({ greeting }) => {
     return(
         <div>
-            <h4>{greeting}</h4>
+            <h3 className={`${classes.h3}`}>{greeting}</h3>
         </div>
     )
 }

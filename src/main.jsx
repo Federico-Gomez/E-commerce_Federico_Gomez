@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import NavBar from './components/NavBar/NavBar.jsx'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.css';
 

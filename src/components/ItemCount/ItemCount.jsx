@@ -1,5 +1,6 @@
 import { useState } from "react"
-import Button from "../Button/Button"
+import AddToCartButton from "../AddToCartButton/AddToCartButton"
+import classes from "./ItemCount.module.css"
 
 const ItemCount = (props) => {
     const [count, setCount] = useState(props.initialValue)
@@ -18,15 +19,14 @@ const ItemCount = (props) => {
     }
 
     return (
-        <div>
-            <h1 style={{ fontSize: "20px" }}>{props.title}</h1>
-            <div style={{display: "flex", flexDirection: "row", justifyContent:"center", alignItems: "center"}}>
-                <button onClick={decrease}>Remove</button>
+        <div className={`${classes.counter_div}`}>
+            <h1 className={`${classes.counter_title}`}>{props.title}</h1>
+            <div className={`${classes.counter}`}>
+                <button className={`${classes.counter_btn}`} onClick={decrease}>-</button>
                 <h4>{count}</h4>
-                <button onClick={increase}>Add</button>
-                <Button label={"Add to Cart"} handleClick={() => localStorage.setItem("item", { count })} />
+                <button className={`${classes.counter_btn}`} onClick={increase}>+</button>
             </div>
-
+            <AddToCartButton label={"Add to Cart"} handleClick={() => localStorage.setItem("item", { count })} />
         </div>
     )
 }

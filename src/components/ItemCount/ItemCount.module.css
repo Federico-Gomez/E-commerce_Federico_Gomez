@@ -1,0 +1,25 @@
+.counter_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.counter_title {
+    font-size: 20px;
+}
+
+.counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.counter_btn {
+    border: none;
+    background-color: #fff;
+    font-size: 30px;
+}

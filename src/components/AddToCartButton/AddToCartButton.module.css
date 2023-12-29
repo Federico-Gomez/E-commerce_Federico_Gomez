@@ -1,0 +1,11 @@
+.add_to_cart_btn {
+    display: flex;
+    justify-content: center;
+    border: solid rgb(197, 28, 28);
+    background-color:  rgb(197, 28, 28);
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    width: 140px;
+    border-radius: 8px;
+}

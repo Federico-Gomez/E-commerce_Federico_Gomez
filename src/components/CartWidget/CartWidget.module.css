@@ -1,0 +1,14 @@
+.widget {
+    width: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-direction: row;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.widget_img {
+    width: 24px;
+}
+

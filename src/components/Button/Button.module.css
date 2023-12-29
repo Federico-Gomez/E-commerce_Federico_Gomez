@@ -4,5 +4,6 @@
     align-items: center;
     justify-content: center;
     border: none;
-    background-color: #fff;
+    background-color: transparent;
+    color: #fff;
 }

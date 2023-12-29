@@ -8,6 +8,7 @@
 
 .counter_title {
     font-size: 20px;
+    color: #fff;
 }
 
 .counter {
@@ -16,10 +17,12 @@
     justify-content: center;
     align-items: flex-end;
     gap: 20px;
+    color: #fff;
 }
 
 .counter_btn {
     border: none;
-    background-color: #fff;
+    background-color: transparent;
+    color: #fff;
     font-size: 30px;
 }

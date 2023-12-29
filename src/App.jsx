@@ -7,11 +7,11 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 function App() {
 
   return (
-    <>
+    <div className='bg'>
       <NavBar/>
       <ItemListContainer greeting={"Welcome! What are you buying?"} />
-      <ItemCount title={"Item"} initialValue={0} />
-    </>
+      <ItemCount title={"Bofes"} initialValue={0} />
+    </div>
   )
 }
 

@@ -1,7 +1,7 @@
-const productos = [
+const products = [
     {
         id: "1",
-        name: "PS5 Slim",
+        name: "PS5",
         price: 500,
         category: "consola",
         img: "https://blog.latam.playstation.com/tachyon/sites/3/2023/10/e08941a3d4b8ac23d60cbf6304e829e2e7a775b7.png?resize=1088%2C612&crop_strategy=smart",
@@ -11,7 +11,7 @@ const productos = [
     {
         id: "2",
         name: "XBox",
-        price: 450,
+        price: 400,
         category: "consola",
         img: "https://blog.latam.playstation.com/tachyon/sites/3/2023/10/e08941a3d4b8ac23d60cbf6304e829e2e7a775b7.png?resize=1088%2C612&crop_strategy=smart",
         stock: 10,
@@ -20,7 +20,7 @@ const productos = [
     {
         id: "3",
         name: "Nintendo Switch",
-        price: 400,
+        price: 300,
         category: "consola",
         img: "https://blog.latam.playstation.com/tachyon/sites/3/2023/10/e08941a3d4b8ac23d60cbf6304e829e2e7a775b7.png?resize=1088%2C612&crop_strategy=smart",
         stock: 25,
@@ -29,9 +29,9 @@ const productos = [
 ]
 
 export const getProducts = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(productos)
-        }, 1000)
+            resolve(products)
+        }, 1200)
     })
 }

@@ -8,6 +8,11 @@
 
 .bg {
   background-image: url(./assets/bt.png);
-  background-size: cover;
+  background-size: 190vh;
+}
+
+.greeting {
+  font-weight: 400;
+  font-size: 34px;
 }
 

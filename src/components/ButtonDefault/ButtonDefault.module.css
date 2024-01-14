@@ -6,6 +6,7 @@
     border: none;
     background-color: transparent;
     color: #fff;
+    text-decoration: none;
 }
 
 .hr {
@@ -14,4 +15,8 @@
     height: 3px;
     border-radius: 10px;
     background: rgb(197, 28, 28);
+}
+
+.hr .disabled {
+    display: none
 }

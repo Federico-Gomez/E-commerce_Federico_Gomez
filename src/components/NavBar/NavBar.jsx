@@ -2,11 +2,12 @@ import ButtonDefault from "../ButtonDefault/ButtonDefault"
 import Button from "../Button/Button"
 import CartWidget from "../CartWidget/CartWidget" 
 import classes from "./NavBar.module.css"
+import { Link } from "react-router-dom"
 
 const NavBar = () => {
     return (
         <nav className={`${classes.navbar}`}>
-            <h1 className={`${classes.title}`}>BT Games</h1>
+            <Link to='/' className={`${classes.title}`}>BT Games</Link>
             <section className={`${classes.navbar_menu}`}>
                 <ButtonDefault label={"Home"} handleClick={() => console.log("Home")} />
                 <Button label={"Consoles"} handleClick={() => console.log("Consolas")}/>

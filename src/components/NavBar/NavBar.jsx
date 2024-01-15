@@ -10,8 +10,8 @@ const NavBar = () => {
             <Link to='/' className={`${classes.title}`}>BT Games</Link>
             <section className={`${classes.navbar_menu}`}>
                 <ButtonDefault label={"Home"} handleClick={() => console.log("Home")} />
-                <Button label={"Consoles"} handleClick={() => console.log("Consolas")}/>
-                <Button label={"Games"} handleClick={() => console.log("Juegos")}/>
+                <Button label={"Consoles"} handleClick={() => console.log("Consoles")}/>
+                <Button label={"Games"} handleClick={() => console.log("Games")}/>
                 <Button label={"About Us"} handleClick={() => console.log("About Us")}/>
                 <Button label={"Contact"} handleClick={() => console.log("Contact")}/>
             </section>

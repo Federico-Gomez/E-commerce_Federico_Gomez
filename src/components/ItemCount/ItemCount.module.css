@@ -1,22 +1,15 @@
 .counter_div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-}
-
-.counter_title {
-    font-size: 20px;
-    color: #fff;
+    
 }
 
 .counter {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: flex-end;
-    gap: 20px;
+    align-items: baseline;
     color: #fff;
 }
 

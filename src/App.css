@@ -3,16 +3,10 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-image: "./assets/bt.png";
 }
 
 .bg {
-  background-image: url(./assets/bt.png);
+  /* background-image: url(./assets/bt.png); */
   background-size: 190vh;
-}
-
-.greeting {
-  font-weight: 400;
-  font-size: 34px;
 }
 

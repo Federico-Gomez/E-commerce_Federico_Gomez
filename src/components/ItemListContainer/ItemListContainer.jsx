@@ -27,13 +27,13 @@ const ItemListContainer = ({ greeting }) => {
     }, [categoryId])
 
     if (loading) {
-        return <h1>Loading products...</h1>
+        return <h1 className={`${classes.loading}`}>Loading products...</h1>
     }
 
     return (
-        <div>
+        <div className={`${classes.container}`}>
             <h3 className={`${classes.h3}`}>{greeting}</h3>
-            <div className={`${classes.container}`}>
+            <div className={`${classes.itemContainer}`}>
                 <ItemList products={products} />
             </div>
 

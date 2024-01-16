@@ -1,0 +1,17 @@
+.h3 {
+    font-size: 24px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+}
+
+.loading {
+    font-size: 24px;
+    padding-top: 20px;
+}
+
+.error {
+    font-size: 24px;
+    padding-top: 20px;
+}

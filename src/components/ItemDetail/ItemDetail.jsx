@@ -15,13 +15,24 @@ const ItemDetail = ({ id, name, category, img, price, description, stock }) => {
     }
 
     return (
-        <article>
-            <h1>{name}</h1>
-            <img className={`${classes.img}`} src={img} alt="imagen producto" />
-            <p>Category: {category}</p>
-            <h5>${price}</h5>
-            <p>Description: {description}</p>
-            <ItemCount stock={stock} onAdd={handleOnAdd}/>
+
+        <article className={`${classes.articleContainer}`}>
+            <h1 className={`${classes.name}`}>{name}</h1>
+            <div className={`${classes.itemContainer}`}>
+                <div>
+                    <img className={`${classes.img}`} src={img} alt="imagen producto" />
+                </div>
+                <div>
+                    <div className={`${classes.description}`}>
+                        <p>Description:</p>
+                        <p > {description}</p>
+                    </div>
+                    <p className={`${classes.category}`}>Category: {category}</p>
+                    <h5 className={`${classes.price}`}>Price: ${price}</h5>
+                    <ItemCount stock={stock} onAdd={handleOnAdd} />
+                </div>
+            </div>
+
         </article>
     )
 }

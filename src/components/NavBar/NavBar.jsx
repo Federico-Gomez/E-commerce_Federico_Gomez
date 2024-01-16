@@ -12,7 +12,7 @@ const NavBar = () => {
                 <ButtonDefault label={"Home"} handleClick={() => console.log("Home")} />
                 <Button label={"Consoles"} handleClick={() => console.log("Consoles")}/>
                 <Button label={"Games"} handleClick={() => console.log("Games")}/>
-                <Button label={"About Us"} handleClick={() => console.log("About Us")}/>
+                <Button label={"Accessories"} handleClick={() => console.log("Accessories")}/>
                 <Button label={"Contact"} handleClick={() => console.log("Contact")}/>
             </section>
             <CartWidget/>

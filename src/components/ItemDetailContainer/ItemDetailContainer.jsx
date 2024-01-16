@@ -13,6 +13,7 @@ const ItemDetailContainer = () => {
     const { productId } = useParams()
 
     useEffect(() => {
+        setLoading(true)
         getProductById(productId)
             .then(response => {
                 setProduct(response)
@@ -24,18 +25,18 @@ const ItemDetailContainer = () => {
     }, [productId])
 
     if(!product) {
-        return <h1>El producto no existe</h1>
+        return <h1 className={`${classes.error}`}>Error 404</h1>
     }
 
     if (loading) {
-        return <h1>Loading product...</h1>
+        return <h1 className={`${classes.loading}`}>Loading product...</h1>
     }
 
 
 
     return (
         <div>
-            <h1>Product Detail</h1>
+            <h3 className={`${classes.h3}`}>Product Detail</h3>
             <ItemDetail {...product}/>
         </div>
     )

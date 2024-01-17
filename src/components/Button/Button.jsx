@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const Button = (props) => {
     
     return(
-        <Link to={`/category/${props.label}`} className={`${classes.btn}`} onClick={props.handleClick} >{props.label} </Link>
+        <Link to={`/category/${props.label}`} className={`${classes.btn}`} onClick={props.handleClick} > {props.label} {props.hr} </Link>
     )
 }
 

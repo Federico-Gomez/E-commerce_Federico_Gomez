@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { getProducts, getProductsByCategory } from "../../asyncMock"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
+import { useNotification } from "../../notification/NotificationService"
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -12,6 +13,8 @@ const ItemListContainer = ({ greeting }) => {
 
     const { categoryId } = useParams()
 
+    const { showNotification } = useNotification()
+
     useEffect(() => {
         setLoading(true)
         const asyncFunction = categoryId ? getProductsByCategory : getProducts
@@ -20,7 +23,7 @@ const ItemListContainer = ({ greeting }) => {
             .then(response => {
                 setProducts(response)
             })
-            .catch(error => {console.log(error)})
+            .catch(error => {showNotification('error', "Error loading products")})
             .finally(() => {
                 setLoading(false)
             })
@@ -32,7 +35,7 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
         <div className={`${classes.container}`}>
-            <h3 className={`${classes.h3}`}>{greeting}</h3>
+            <h3 className={`${classes.h3}`}>{greeting + (categoryId ?? '')}</h3>
             <div className={`${classes.itemContainer}`}>
                 <ItemList products={products} />
             </div>

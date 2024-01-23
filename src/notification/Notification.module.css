@@ -1,0 +1,43 @@
+.notificationSuccess {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    background-color: rgb(40, 167, 40);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 0px 20px 0px 20px;
+}
+
+.notificationWarning {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    background-color: rgb(212, 181, 40);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 0px 20px 0px 20px;
+}
+
+.notificationError {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    background-color: rgb(212, 41, 11);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 0px 20px 0px 20px;
+}
+
+.notificationInfo {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+    background-color: rgb(19, 152, 214);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 0px 20px 0px 20px;
+}

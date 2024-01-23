@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { getProductById } from "../../asyncMock"
 import { useParams } from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
+import { useNotification } from "../../notification/NotificationService"
 
 const ItemDetailContainer = () => {
 
@@ -12,13 +13,15 @@ const ItemDetailContainer = () => {
 
     const { productId } = useParams()
 
+    const { showNotification } = useNotification()
+
     useEffect(() => {
         setLoading(true)
         getProductById(productId)
             .then(response => {
                 setProduct(response)
             })
-            .catch(error => {console.log(error)})
+            .catch(error => {showNotification('error', "Error loading products")})
             .finally(() => {
                 setLoading(false)
             })

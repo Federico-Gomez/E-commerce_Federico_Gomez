@@ -18,7 +18,6 @@ const NavBar = () => {
                 <Link to={`/category/Consoles`} className={`${classes.btn}`}  onClick={() => { setMenu("Consoles") }} > Consoles {menu === "Consoles" ? <hr className={`${classes.hr}`} /> : <></>} </Link>
                 <Link to={`/category/Accessories`} className={`${classes.btn}`}  onClick={() => { setMenu("Accessories") }} > Accessories {menu === "Accessories" ? <hr className={`${classes.hr}`} /> : <></>} </Link>
                 <Link to={`/category/Games`} className={`${classes.btn}`}  onClick={() => { setMenu("Games") }} > Games {menu === "Games" ? <hr className={`${classes.hr}`} /> : <></>} </Link>
-                <Link to={`/category/Contact`} className={`${classes.btn}`}  onClick={() => { setMenu("Contact") }} > Contact {menu === "Contact" ? <hr className={`${classes.hr}`} /> : <></>} </Link>
             </section>
             <CartWidget />
         </nav>

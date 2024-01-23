@@ -22,7 +22,7 @@ function App() {
               <Route path='/category/:categoryId' element={<ItemListContainer greeting={"Articles by Category: "} />} />
               <Route path='/detail/:productId' element={<ItemDetailContainer />} />
               <Route path='/cart' element={<Cart />} />
-              <Route path='*' element={<h1>Error 404</h1>} />
+              <Route path='*' element={<h1>404 Not available</h1>} />
             </Routes>
           </div>
         </CartProvider>

@@ -7,7 +7,9 @@ const CartContext = createContext({
     totalQuantity: 0,
     total: 0,
     clearCart: () => {}
+
 })
+
 
 export const CartProvider = ({ children }) => {
 
@@ -18,7 +20,7 @@ export const CartProvider = ({ children }) => {
       if (!isInCart(productToAdd.id)) {
         setCart(prev => [...prev, productToAdd])
       } else {
-        console.log("This product has already been added to your cart.")
+        console.log('error', "This product has already been added to your cart.")
       }
     }
   

@@ -15,9 +15,7 @@ const AppRouter = () => {
     return (
         <Routes>
             <Route path='/' element={<ItemListContainer greeting={"Welcome! What are you buying?"} />} />
-
             <Route path='/category/:categoryId' element={<ItemListContainer greeting={"Articles by Category: "} />} />
-
             <Route path='/detail/:productId' element={<ItemDetailContainer />} />
 
             <Route>

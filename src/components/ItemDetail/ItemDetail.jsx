@@ -6,7 +6,6 @@ import { useNotification } from "../../notification/NotificationService"
 
 const ItemDetail = ({ id, name, category, img, price, description, stock }) => {
     const [quantity, setQuantity] = useState({})
-    console.log(quantity)
 
     const { addItem } = useCart()
 

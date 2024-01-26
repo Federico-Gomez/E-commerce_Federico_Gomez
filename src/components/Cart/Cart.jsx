@@ -1,6 +1,5 @@
 import classes from "./Cart.module.css"
 import { useCart } from "../../context/CartContext"
-import { useNotification } from "../../notification/NotificationService"
 import { Link } from "react-router-dom"
 import CartItem from "../CartItem/CartItem"
 

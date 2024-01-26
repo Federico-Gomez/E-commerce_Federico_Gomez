@@ -1,9 +1,11 @@
 import classes from "./ItemListContainer.module.css"
 import { useState, useEffect } from "react"
-import { getProducts, getProductsByCategory } from "../../asyncMock"
+//import { getProducts, getProductsByCategory } from "../../asyncMock"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import { useNotification } from "../../notification/NotificationService"
+import { db } from "../../services/firebase/firebaseConfig"
+import { getDocs, collection, query, where } from "firebase/firestore"
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -17,16 +19,35 @@ const ItemListContainer = ({ greeting }) => {
 
     useEffect(() => {
         setLoading(true)
-        const asyncFunction = categoryId ? getProductsByCategory : getProducts
 
-        asyncFunction(categoryId)
-            .then(response => {
-                setProducts(response)
+        const productsCollection = categoryId 
+        ? query(collection(db, 'products'), where('category', '==', categoryId))
+        : collection(db, 'products')
+
+        getDocs(productsCollection)
+            .then(querySnapshot => {
+                const productsAdapted = querySnapshot.docs.map(doc => {
+                    const fields = doc.data()
+                    return { id: doc.id, ...fields}
+                })
+                setProducts(productsAdapted)
             })
             .catch(error => {showNotification('error', "Error loading products")})
             .finally(() => {
                 setLoading(false)
             })
+
+        // const asyncFunction = categoryId ? getProductsByCategory : getProducts
+
+        // asyncFunction(categoryId)
+        //     .then(response => {
+        //         setProducts(response)
+        //     })
+        //     .catch(error => {showNotification('error', "Error loading products")})
+        //     .finally(() => {
+        //         setLoading(false)
+        //     })
+
     }, [categoryId])
 
     if (loading) {

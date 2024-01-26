@@ -14,7 +14,7 @@ const ItemDetail = ({ id, name, category, img, price, description, stock }) => {
 
     const handleOnAdd = (quantity) => {
         const objProductToAdd = {
-            id, name, quantity, price
+            id, name, quantity, price, img
         }
 
         addItem(objProductToAdd)

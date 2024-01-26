@@ -20,6 +20,7 @@ const NavBar = () => {
                 <Link to={`/category/Games`} className={`${classes.btn}`}  onClick={() => { setMenu("Games") }} > Games {menu === "Games" ? <hr className={`${classes.hr}`} /> : <></>} </Link>
             </section>
             <CartWidget />
+            <Link to='/login' className={`${classes.login_btn}`} > Login </Link>
         </nav>
     )
 }

@@ -41,3 +41,16 @@
     color: #020000;
     text-decoration: none;
 }
+
+.login_btn {
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    width: 60px;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 10px;
+    border: solid  rgb(197, 28, 28) 2px;
+}

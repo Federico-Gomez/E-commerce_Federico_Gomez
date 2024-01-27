@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 20px;
     width: 150px;
+    align-items: center;
 }
 
 .formItem {
@@ -29,6 +30,7 @@
 .h3 {
     padding-top: 20px;
     font-size: 18px;
+    width: 160px;
 }
 
 .form_btn {

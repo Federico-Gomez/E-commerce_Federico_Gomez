@@ -20,9 +20,11 @@ const Cart = () => {
     return (
         <div className={`${classes.cart}`}>
 
+            <h3 className={`${classes.items}`}>Your Items:</h3>
+
             {cart.map(prod => {
                 return (
-                    <CartItem key={prod.id} {...prod}/>
+                    <CartItem key={prod.id} {...prod} />
                 )
             })}
 

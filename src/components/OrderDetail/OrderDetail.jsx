@@ -1,7 +1,7 @@
-import CartItem from "../CartItem/CartItem"
 import { useCart } from "../../context/CartContext"
 import styles from './OrderDetail.module.css'
 import { Link } from "react-router-dom"
+import OrderDetailItem from "../OrderDetailItem/OrderDetailItem"
 
 const OrderDetail = () => {
 
@@ -12,7 +12,7 @@ const OrderDetail = () => {
 
             {cart.map(prod => {
                 return (
-                    <CartItem key={prod.id} {...prod}/>
+                    <OrderDetailItem key={prod.id} {...prod}/>
                 )
             })}
 

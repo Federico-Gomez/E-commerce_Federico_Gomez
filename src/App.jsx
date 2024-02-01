@@ -2,7 +2,7 @@
 import './App.css'
 import NavBar from './components/NavBar/NavBar/'
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import { NotificationProvider } from './notification/NotificationService'
 

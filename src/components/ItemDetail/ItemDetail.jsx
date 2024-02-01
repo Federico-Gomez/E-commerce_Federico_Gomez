@@ -1,13 +1,11 @@
-import { useState } from "react"
 import classes from "./ItemDetail.module.css"
 import ItemCount from '../ItemCount/ItemCount'
 import { useCart } from "../../context/CartContext"
 import { useNotification } from "../../notification/NotificationService"
 
 const ItemDetail = ({ id, name, category, img, price, description, stock }) => {
-    const [quantity, setQuantity] = useState({})
 
-    const { addItem } = useCart()
+    const { addItem, getProductQuantity } = useCart()
 
     const { showNotification } = useNotification()
 
@@ -17,9 +15,10 @@ const ItemDetail = ({ id, name, category, img, price, description, stock }) => {
         }
 
         addItem(objProductToAdd)
-        showNotification('success', `${quantity} Items added to Cart`)
-        setQuantity(quantity)
+        showNotification('success', `${quantity} ${name} added to Cart`)
     }
+
+    const productQuantity = getProductQuantity(id)
 
     return (
 
@@ -36,7 +35,7 @@ const ItemDetail = ({ id, name, category, img, price, description, stock }) => {
                     </div>
                     <p className={`${classes.category}`}>Category: {category}</p>
                     <h5 className={`${classes.price}`}>Price: ${price}</h5>
-                    <ItemCount stock={stock} onAdd={handleOnAdd} />
+                    <ItemCount stock={stock} onAdd={handleOnAdd} initial={productQuantity}/>
                 </div>
             </div>
 

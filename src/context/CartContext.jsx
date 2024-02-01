@@ -7,7 +7,6 @@ const CartContext = createContext({
     totalQuantity: 0,
     total: 0,
     clearCart: () => {}
-
 })
 
 
@@ -16,11 +15,23 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
     console.log(cart)
 
-    const addItem = (productToAdd) => {
+
+    const addItem = (productToAdd, quantity) => {
       if (!isInCart(productToAdd.id)) {
         setCart(prev => [...prev, productToAdd])
       } else {
-        console.log('error', "This product has already been added to your cart.")
+        const cartUpdated = cart.map(prod => {
+          if (prod.id === productToAdd.id) {
+            return {
+              ...prod,
+              quantity: productToAdd.quantity
+            }
+          } else {
+            return prod
+          }
+        })
+
+        setCart(cartUpdated)
       }
     }
   
@@ -62,8 +73,13 @@ export const CartProvider = ({ children }) => {
         setCart([])
     }
 
+    const getProductQuantity = (productId) => {
+      const product = cart.find(prod => prod.id === productId)
+      return product?.quantity
+    }
+
     return (
-        <CartContext.Provider value={{ cart, addItem, removeItem, totalQuantity, total, clearCart }}>
+        <CartContext.Provider value={{ cart, addItem, removeItem, totalQuantity, total, clearCart, getProductQuantity }}>
             {children}
         </CartContext.Provider>
     )

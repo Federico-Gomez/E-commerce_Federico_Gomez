@@ -18,11 +18,11 @@ const AppRouter = () => {
             <Route path='/category/:categoryId' element={<ItemListContainer greeting={"Articles by Category: "} />} />
             <Route path='/detail/:productId' element={<ItemDetailContainer />} />
 
-            <Route>
+            <Route >
                 <Route path='/cart' element={<Cart />} />
             </Route>
 
-            <Route>
+            <Route >
                 <Route path='/checkout' element={<Checkout />} />
             </Route>
 

@@ -28,11 +28,9 @@ const LoginForm = ({onLogin}) => {
             </div>
             <div className={styles.formItem}>
                 <div className={styles.formAction}>
-                    <button type="submit" className={styles.form_btn}>Login</button>
+                    <button type="submit" className={styles.form_btn}>Sign in</button>
                 </div>
             </div>
-
-
         </form>
     )
 

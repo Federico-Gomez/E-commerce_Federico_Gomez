@@ -1,33 +1,15 @@
-import { useCart } from "../../context/CartContext"
+import { db } from "../firebaseConfig"
 import { getDocs, collection, where, query, documentId, writeBatch, addDoc } from "firebase/firestore"
-import { db } from "../../services/firebase/firebaseConfig"
-import styles from './Checkout.module.css'
-import CheckoutForm from "../CheckoutForm/CheckoutForm"
-import { useNotification } from "../../notification/NotificationService"
+import { useNotification } from "../../../notification/NotificationService"
+import { useCart } from "../../../context/CartContext"
 import { useState } from "react"
-import OrderDetail from "../OrderDetail/OrderDetail"
-import { useOrders } from "../../services/firebase/firestore/orders"
 
-const Checkout = () => {
-    const [loading, setLoading] = useState(false)
-    const [orderId, setOrderId] = useState(null)
+export const useOrders = () => {
+
     const { cart, total, clearCart } = useCart()
     const { showNotification } = useNotification()
-
-    //  const { createOrder } = useOrders()
-
-    //  const handleCreateOrder = () => {
-
-    //     createOrder().then(response => {
-    //          console.log(response)
-    //          if(response) {
-    //             clearCart()
-    //         }
-    //     }).catch(error => {
-    //          console.log(error)
-    //      })
-    //  }
-
+    const [orderId, setOrderId] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     const createOrder = async (userData) => {
         setLoading(true)
@@ -72,6 +54,7 @@ const Checkout = () => {
                 const orderCollection = collection(db, 'orders')
                 const { id } = await addDoc(orderCollection, objOrder)
                 setOrderId(id)
+                console.log(orderId)
                 clearCart()
 
             } else {
@@ -79,30 +62,13 @@ const Checkout = () => {
             }
 
         } catch (error) {
-            showNotification('error', "There was an error processing your order")
+            return error
         } finally {
             setLoading(false)
         }
     }
 
-    if (loading) {
-        return <h3 className={styles.h3}>Processing your order, please wait...</h3>
+    return {
+        createOrder
     }
-    if (orderId) {
-        return <h3 className={styles.h3}>Your order has the following id: {orderId}</h3>
-    }
-
-    return (
-        <div className={styles.container}>
-            <div className={styles.form}>
-                <CheckoutForm onCreateOrder={ createOrder } />
-            </div>
-            <div className={styles.order_container}>
-                <h1 className={styles.h1}>Order detail</h1>
-                <OrderDetail />
-            </div>
-        </div>
-    )
 }
-
-export default Checkout

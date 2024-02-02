@@ -4,45 +4,49 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useNotification } from "../../notification/NotificationService"
-import { db } from "../../services/firebase/firebaseConfig"
-import { getDoc, doc } from "firebase/firestore"
+import { getProductById } from "../../services/firebase/firestore/products"
+import { useAsync } from "../../hooks/useAsync"
 
 const ItemDetailContainer = () => {
-
-    const [loading, setLoading] = useState(true)
-
-    const [product, setProduct] = useState({})
 
     const { productId } = useParams()
 
     const { showNotification } = useNotification()
 
     useEffect(() => {
-        setLoading(true)
+        if (product) document.title = product.name
 
-        const productDocument = doc(db, 'products', productId)
+        return () => {
+            document.title = "BT Games"
+        }
+    })
 
-        getDoc(productDocument)
-            .then(queryDocumentSnapshot => {
-                const fields = queryDocumentSnapshot.data()
-                const productAdapted = {id: queryDocumentSnapshot.id, ...fields}
-                setProduct(productAdapted)
-            })
-            .catch(error => {showNotification('error', "Error loading product")})
-            .finally(() => {
-                setLoading(false)
-            })
+    const asyncFunction = () => getProductById(productId)
 
-        // getProductById(productId)
-        //     .then(response => {
-        //         setProduct(response)
-        //     })
-        //     .catch(error => {showNotification('error', "Error loading products")})
-        //     .finally(() => {
-        //         setLoading(false)
-        //     })
+    const { data: product, error, loading } = useAsync(asyncFunction, [productId])
 
-    }, [productId])
+    // useEffect(() => {
+    //     setLoading(true)
+
+    //     getProductById(productId)
+    //         .then(product => {
+    //             setProduct(product)
+    //         })
+    //         .catch(error => {showNotification('error', "Error loading product")})
+    //         .finally(() => {
+    //             setLoading(false)
+    //         })
+
+    //     // getProductById(productId)
+    //     //     .then(response => {
+    //     //         setProduct(response)
+    //     //     })
+    //     //     .catch(error => {showNotification('error', "Error loading products")})
+    //     //     .finally(() => {
+    //     //         setLoading(false)
+    //     //     })
+
+    // }, [productId])
 
     if (!product) {
         return <h1 className={`${classes.error}`}>404 Not available</h1>
@@ -50,6 +54,10 @@ const ItemDetailContainer = () => {
 
     if (loading) {
         return <h1 className={`${classes.loading}`}>Loading product...</h1>
+    }
+
+    if (error) {
+        showNotification('error', "Error loading products")
     }
 
     return (

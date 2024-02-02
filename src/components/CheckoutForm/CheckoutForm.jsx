@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styles from './CheckoutForm.module.css'
 
-const CheckoutForm = ({ onCreate }) => {
+const CheckoutForm = ( {onCreateOrder} ) => {
 
     const INITIAL_STATE = {name: '', phone: '', email: ''}
     const [userData, setUserData] = useState(INITIAL_STATE)
@@ -12,7 +12,7 @@ const CheckoutForm = ({ onCreate }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        onCreate(userData)
+        onCreateOrder(userData)
         setUserData(INITIAL_STATE)
     }
 

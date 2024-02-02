@@ -4,54 +4,59 @@ import { useState, useEffect } from "react"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import { useNotification } from "../../notification/NotificationService"
-import { db } from "../../services/firebase/firebaseConfig"
-import { getDocs, collection, query, where, orderBy } from "firebase/firestore"
+import { getProducts } from "../../services/firebase/firestore/products"
+import { useAsync } from "../../hooks/useAsync"
 
 const ItemListContainer = ({ greeting }) => {
 
-    const [loading, setLoading] = useState(true)
-
-    const [products, setProducts] = useState([])
-
     const { categoryId } = useParams()
-
     const { showNotification } = useNotification()
 
     useEffect(() => {
-        setLoading(true)
+        if (categoryId) document.title = "BT Games: " + categoryId
 
-        const productsCollection = categoryId 
-        ? query(collection(db, 'products'), where('category', '==', categoryId))
-        : query(collection(db, 'products'), orderBy('category'))
-
-        getDocs(productsCollection)
-            .then(querySnapshot => {
-                const productsAdapted = querySnapshot.docs.map(doc => {
-                    const fields = doc.data()
-                    return { id: doc.id, ...fields}
-                })
-                setProducts(productsAdapted)
-            })
-            .catch(error => {showNotification('error', "Error loading products")})
-            .finally(() => {
-                setLoading(false)
-            })
-
-        // const asyncFunction = categoryId ? getProductsByCategory : getProducts
-
-        // asyncFunction(categoryId)
-        //     .then(response => {
-        //         setProducts(response)
-        //     })
-        //     .catch(error => {showNotification('error', "Error loading products")})
-        //     .finally(() => {
-        //         setLoading(false)
-        //     })
-
+        return () => {
+            document.title = "BT Games"
+        }
     }, [categoryId])
+
+    const asyncFunction = () => getProducts(categoryId)
+
+    const { data: products, error, loading } = useAsync(asyncFunction, [categoryId])
+
+
+    // useEffect(() => {
+    //     setLoading(true)
+
+    //     getProducts(categoryId)
+    //         .then(products => {
+    //             setProducts(products)
+    //         })
+    //         .catch(error => {showNotification('error', "Error loading products")})
+    //         .finally(() => {
+    //             setLoading(false)
+    //         })
+
+
+    //     // const asyncFunction = categoryId ? getProductsByCategory : getProducts
+
+    //     // asyncFunction(categoryId)
+    //     //     .then(response => {
+    //     //         setProducts(response)
+    //     //     })
+    //     //     .catch(error => {showNotification('error', "Error loading products")})
+    //     //     .finally(() => {
+    //     //         setLoading(false)
+    //     //     })
+
+    // }, [categoryId])
 
     if (loading) {
         return <h1 className={`${classes.loading}`}>Loading products...</h1>
+    }
+
+    if (error) {
+        showNotification('error', "Error loading products")
     }
 
     return (

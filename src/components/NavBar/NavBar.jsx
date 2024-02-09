@@ -9,7 +9,7 @@ import { useAuth } from "../../context/AuthContext"
 const NavBar = () => {
 
     const [menu, setMenu] = useState("Home")
-    const { user } = useAuth()
+    const { user, signout, error } = useAuth()
 
     const [categories, setCategories] = useState([])
 
@@ -45,9 +45,25 @@ const NavBar = () => {
                     <Link to={`/category/Games`} className={`${classes.btn}`} onClick={() => { setMenu("Games") }} > Games {menu === "Games" ? <hr className={`${classes.hr}`} /> : <></>} </Link>
                 </section> */}
 
-            </section> 
+            </section>
             <CartWidget />
-            <Link to='/login' className={`${classes.login_btn}`} > Login </Link>
+
+            <>
+                <>
+                    {!user &&
+                        <Link to='/login' className={`${classes.login_btn}`} > Sign in </Link>
+                    }
+                </>
+
+                <>
+                    {user &&
+                        <div className={`${classes.auth}`}>
+                            <h4 className={`${classes.auth_text}`}>User: {user.email}</h4>
+                            <button className={`${classes.logout_btn}`} onClick={signout}>Sign Out</button>
+                        </div>
+                    }
+                </>
+            </>
         </nav>
     )
 }

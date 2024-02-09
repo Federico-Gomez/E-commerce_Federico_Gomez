@@ -6,6 +6,7 @@ export const createUser = async(uid, data) => {
         const userRef = doc(db, 'users', uid)
         await setDoc(userRef, data, { merge: true })
         const user = await getDoc(userRef)
+        console.log(data)
         return user.data()
     } catch (error) {
         console.log(error)

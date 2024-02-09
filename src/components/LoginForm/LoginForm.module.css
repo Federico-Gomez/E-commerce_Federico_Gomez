@@ -22,6 +22,8 @@
 }
 
 .formAction {
+    display: flex;
+    flex-direction: row;
     margin-top: 30px;
     font-size: 18px;
 }
@@ -35,7 +37,7 @@
     width: 100px;
     border-radius: 4px;
     padding: 6px;
-    margin-top: 10px;
+    margin: 10px;
     border: none;
     font-weight: 500;
 }
